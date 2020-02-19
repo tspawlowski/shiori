@@ -1,0 +1,17 @@
+---
+kind: pipeline
+name: default
+
+workspace:
+  base: /pasteip
+
+steps:
+  - name: build_tagged_container
+    image: plugins/gcr
+    settings:
+      tags: latest
+      dockerfile: Dockerfile
+      repo: januscs-k8s/shiori
+      auto_tag: true
+      json_key:
+        from_secret: gcr-credentials
